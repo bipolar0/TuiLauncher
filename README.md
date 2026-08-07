@@ -9,3 +9,4 @@ There should be problems you can run through.
 
 
 # READ ATTRIBUTION.md
+[Attribution.md](https://github.com/bipolar0/TuiLauncher/blob/main/ATTRIBUTION.md)
