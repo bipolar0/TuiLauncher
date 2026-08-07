@@ -9,9 +9,9 @@ Keep all existing copyright headers and license notices in every source file.
 ## State Your Changes
 Clearly indicate which files you modified and what changes you made.
 Example:
-| 
-| "This file was modified from the original TuiLauncher project (https://github.com/bipolar0/tuilauncher). Changes: Added mod support, refactored downloader."
-| 
+ 
+ "This file was modified from the original TuiLauncher project (https://github.com/bipolar0/tuilauncher). Changes: Added mod support, refactored downloader."
+ 
 ## Include the Full GPL v3 License
 The LICENSE file must remain in your repository/distribution.
 
@@ -20,9 +20,9 @@ If you distribute a binary/compiled version, you must also make the full source 
 
 ## Credit the Original Author
 Add a visible attribution in your README or About section:
-|
-| "This software is based on TuiLauncher by bipolar0 (https://github.com/bipolar0/tuilauncher)."
-|
+
+ "This software is based on TuiLauncher by bipolar0 (https://github.com/bipolar0/tuilauncher)."
+
 # ❌ You MUST NOT:
 - Remove or alter the original author's name or copyright notices.
 - Use the code in closed-source/proprietary projects (GPL v3 prohibits this).
