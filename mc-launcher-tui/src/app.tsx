@@ -83,10 +83,10 @@ function App() {
     <Box flexDirection="column">
       {screen === 'menu' && <Menu onSelect={handleSelect} />}
       {screen === 'versions' && (
-        <Placeholder title="Sürüm Seç" onBack={() => setScreen('menu')} />
+        <Placeholder title="Select a version" onBack={() => setScreen('menu')} />
       )}
       {screen === 'profiles' && (
-        <Placeholder title="Profil Seç" onBack={() => setScreen('menu')} />
+        <Placeholder title="Select a profile" onBack={() => setScreen('menu')} />
       )}
     </Box>
   );
