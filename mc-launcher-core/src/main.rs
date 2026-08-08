@@ -66,6 +66,16 @@ fn current_os_name() -> &'static str {
     }
 }
 
+fn native_file_extension() -> &'static str {
+    if cfg!(target_os = "windows") {
+        "dll"
+    } else if cfg!(target_os = "macos") {
+        "dylib"
+    } else {
+        "so"
+    }
+}
+
 fn applies_to_current_os(rules: &Option<Vec<Rule>>) -> bool {
     let rules = match rules {
         Some(r) => r,
@@ -89,12 +99,14 @@ fn applies_to_current_os(rules: &Option<Vec<Rule>>) -> bool {
 }
 
 fn is_our_native_library(name: &str) -> bool {
-    name.ends_with(":natives-windows")
+    let suffix = format!(":natives-{}", current_os_name());
+    name.ends_with(&suffix)
 }
 
 fn extract_natives(jar_path: &str, out_dir: &str) -> Result<(), Box<dyn std::error::Error>> {
     let file = File::open(jar_path)?;
     let mut archive = ZipArchive::new(file)?;
+    let extension = native_file_extension();
 
     fs::create_dir_all(out_dir)?;
 
@@ -102,7 +114,7 @@ fn extract_natives(jar_path: &str, out_dir: &str) -> Result<(), Box<dyn std::err
         let mut entry = archive.by_index(i)?;
         let entry_name = entry.name().to_string();
 
-        if !entry_name.ends_with(".dll") {
+        if !entry_name.ends_with(&format!(".{}", extension)) {
             continue;
         }
 
@@ -142,7 +154,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .collect();
 
     println!(
-        "Toplam kütüphane: {}, senin OS'ta gerekli: {}\n",
+        "Toplam kütüphane: {}, Sisteminde gerekenler: {}\n",
         details.libraries.len(),
         needed.len()
     );
